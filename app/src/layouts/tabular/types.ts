@@ -7,6 +7,8 @@ export type LayoutOptions = {
 	};
 	limit?: number;
 	spacing?: 'comfortable' | 'cozy' | 'compact';
+	iframeSrc: string;
+	iframeHeight: string
 };
 
 export type LayoutQuery = {

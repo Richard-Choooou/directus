@@ -127,7 +127,10 @@ const logoURL = computed<string | null>(() => {
 
 		--theme--form--field--label--font-family: var(--theme--public--form--field--label--font-family);
 		--theme--form--field--label--foreground: var(--theme--public--form--field--label--foreground);
-
+		position: absolute;
+		right: 0;
+		top: 0;
+		height: 100%;
 		z-index: 2;
 		display: flex;
 		flex-shrink: 0;

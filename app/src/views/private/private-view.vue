@@ -37,10 +37,16 @@ const props = withDefaults(
 		splitView?: boolean;
 		splitViewMinWidth?: number;
 		sidebarShadow?: boolean;
+		showHeader?: boolean;
+		showSideBar?: boolean;
+		showNavigate?: boolean
 	}>(),
 	{
 		headerShadow: true,
 		splitViewMinWidth: 0,
+		showHeader: true,
+		showSideBar: true,
+		showNavigate: true
 	},
 );
 
@@ -275,10 +281,10 @@ function getWidth(input: unknown, fallback: number): number {
 				@dragging="(value) => (isDraggingNav = value)"
 				@transition-end="onNavTransitionEnd"
 			>
-				<div class="module-nav alt-colors">
+				<div v-if="showNavigate" class="module-nav alt-colors" >
 					<project-info />
 
-					<div class="module-nav-content">
+					<div class="module-nav-content" >
 						<slot name="navigation" />
 					</div>
 				</div>
@@ -286,6 +292,7 @@ function getWidth(input: unknown, fallback: number): number {
 		</aside>
 		<div id="main-content" ref="contentEl" class="content">
 			<header-bar
+				v-show="showHeader"
 				ref="headerBarEl"
 				:small="smallHeader || splitView"
 				:shadow="headerShadow || splitView"
@@ -319,6 +326,7 @@ function getWidth(input: unknown, fallback: number): number {
 			</div>
 		</div>
 		<aside
+			v-show="showSideBar"
 			id="sidebar"
 			ref="sidebarEl"
 			role="contentinfo"

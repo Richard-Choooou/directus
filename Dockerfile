@@ -1,7 +1,7 @@
 # syntax=docker/dockerfile:1.4
 
 ####################################################################################################
-## Build Packages
+# Build Packages
 
 FROM node:18-alpine AS builder
 WORKDIR /directus

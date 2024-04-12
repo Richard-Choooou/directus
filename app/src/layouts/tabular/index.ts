@@ -83,6 +83,8 @@ export default defineLayout<LayoutOptions, LayoutQuery>({
 			onAlignChange,
 			activeFields,
 			tableSpacing,
+			iframeHeight,
+			iframeSrc
 		} = useTable();
 
 		const showingCount = computed(() => {
@@ -125,6 +127,8 @@ export default defineLayout<LayoutOptions, LayoutQuery>({
 			fieldsWithRelationalAliased,
 			aliasedFields,
 			aliasedKeys,
+			iframeHeight,
+			iframeSrc
 		};
 
 		async function resetPresetAndRefresh() {
@@ -286,6 +290,8 @@ export default defineLayout<LayoutOptions, LayoutQuery>({
 			});
 
 			const tableSpacing = syncRefProperty(layoutOptions, 'spacing', 'cozy');
+			const iframeSrc = syncRefProperty(layoutOptions, 'iframeSrc', '');
+			const iframeHeight = syncRefProperty(layoutOptions, 'iframeHeight', '0');
 
 			const tableRowHeight = computed<number>(() => {
 				switch (tableSpacing.value) {
@@ -309,6 +315,8 @@ export default defineLayout<LayoutOptions, LayoutQuery>({
 				onAlignChange,
 				activeFields,
 				getFieldDisplay,
+				iframeSrc,
+				iframeHeight
 			};
 
 			function onRowClick({ item, event }: { item: Item; event: PointerEvent }) {

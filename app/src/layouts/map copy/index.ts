@@ -17,8 +17,8 @@ import { getMapStyle } from './style';
 import { LayoutOptions, LayoutQuery } from './types';
 
 export default defineLayout<LayoutOptions, LayoutQuery>({
-	id: 'map',
-	name: '$t:layouts.map.map',
+	id: 'new-map',
+	name: '新地图',
 	icon: 'map',
 	smallHeader: true,
 	sidebarShadow: true,
@@ -36,12 +36,10 @@ export default defineLayout<LayoutOptions, LayoutQuery>({
 		const layoutQuery = useSync(props, 'layoutQuery', emit);
 
 		const { collection, filter, filterUser, search } = toRefs(props);
-		console.log('collection', collection)
 
 		const { info, primaryKeyField, fields: fieldsInCollection } = useCollection(collection);
-
-
-		console.log('fields', fields)
+		console.log('collection', collection)
+		console.log('fields', fieldsInCollection)
 
 		const page = syncRefProperty(layoutQuery, 'page', 1);
 		const limit = syncRefProperty(layoutQuery, 'limit', 1000);
@@ -100,6 +98,7 @@ export default defineLayout<LayoutOptions, LayoutQuery>({
 		const queryFields = computed(() => {
 			return [geometryField.value, ...getFieldsFromTemplate(template.value)]
 				.concat(primaryKeyField.value?.field)
+				.concat(['pointColor', 'lineColor', 'polygonLineColor', 'polygonFillColor']) // 自定义颜色
 				.filter((e) => !!e) as string[];
 		});
 

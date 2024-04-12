@@ -43,6 +43,8 @@ interface Props {
 	aliasedKeys: string[];
 	onSortChange: (newSort: { by: string; desc: boolean }) => void;
 	onAlignChange?: (field: 'string', align: 'left' | 'center' | 'right') => void;
+	iframeSrc: string;
+	iframeHeight: string;
 }
 
 const props = withDefaults(defineProps<Props>(), {
@@ -57,6 +59,8 @@ const props = withDefaults(defineProps<Props>(), {
 	filterUser: undefined,
 	search: undefined,
 	onAlignChange: () => undefined,
+	iframeHeight: '',
+	iframeSrc: 'https://www.bilibili.com',
 });
 
 const emit = defineEmits(['update:selection', 'update:tableHeaders', 'update:limit', 'update:fields']);
@@ -112,6 +116,24 @@ function removeField(fieldKey: string) {
 
 <template>
 	<div class="layout-tabular">
+		<div
+			v-if="iframeSrc"
+			:style="{
+				width: '100%',
+				height: iframeHeight,
+				padding: '0 32px'
+			}"
+		>
+			<iframe
+
+				:src="iframeSrc"
+				:style="{
+					width: '100%',
+					height: '100%',
+					border: 'none'
+				}">
+			</iframe>
+		</div>
 		<v-table
 			v-if="loading || (itemCount && itemCount > 0 && !error)"
 			ref="table"
