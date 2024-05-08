@@ -34,27 +34,27 @@ export function getBasemapSources(): [BasemapSource] | BasemapSource[] {
 	return [defaultBasemap, ...(settingsStore.settings?.basemaps || []), {
 		name: '天地图卫星影像',
 		type: 'raster',
-		url: 'https://t0.tianditu.gov.cn/img_w/wmts?SERVICE=WMTS&REQUEST=GetTile&VERSION=1.0.0&LAYER=img&STYLE=default&TILEMATRIXSET=w&FORMAT=tiles&TILECOL={x}&TILEROW={y}&TILEMATRIX={z}&tk=1cf25c9bbfd974d08ab7b788a43ce36e',
-		tileSize: 512,
+		url: 'https://t1.tianditu.gov.cn/img_w/wmts?SERVICE=WMTS&REQUEST=GetTile&VERSION=1.0.0&LAYER=img&STYLE=default&TILEMATRIXSET=w&FORMAT=tiles&TILECOL={x}&TILEROW={y}&TILEMATRIX={z}&tk=1cf25c9bbfd974d08ab7b788a43ce36e',
+		tileSize: 256,
 		attribution: '',
 	}, {
 		name: '天地图矢量图像',
 		type: 'raster',
-		url: 'http://t0.tianditu.gov.cn/vec_w/wmts?SERVICE=WMTS&REQUEST=GetTile&VERSION=1.0.0&LAYER=vec&STYLE=default&TILEMATRIXSET=w&FORMAT=tiles&TILECOL={x}&TILEROW={y}&TILEMATRIX={z}&tk=1cf25c9bbfd974d08ab7b788a43ce36e',
-		tileSize: 512,
+		url: 'https://t1.tianditu.gov.cn/vec_w/wmts?SERVICE=WMTS&REQUEST=GetTile&VERSION=1.0.0&LAYER=vec&STYLE=default&TILEMATRIXSET=w&FORMAT=tiles&TILECOL={x}&TILEROW={y}&TILEMATRIX={z}&tk=1cf25c9bbfd974d08ab7b788a43ce36e',
+		tileSize: 256,
 		attribution: '',
 	}, {
 		name: '天地图卫星影像(标注)',
 		type: 'raster',
-		url: 'https://t0.tianditu.gov.cn/img_w/wmts?SERVICE=WMTS&REQUEST=GetTile&VERSION=1.0.0&LAYER=img&STYLE=default&TILEMATRIXSET=w&FORMAT=tiles&TILECOL={x}&TILEROW={y}&TILEMATRIX={z}&tk=1cf25c9bbfd974d08ab7b788a43ce36e',
-		tileSize: 512,
+		url: 'https://t1.tianditu.gov.cn/img_w/wmts?SERVICE=WMTS&REQUEST=GetTile&VERSION=1.0.0&LAYER=img&STYLE=default&TILEMATRIXSET=w&FORMAT=tiles&TILECOL={x}&TILEROW={y}&TILEMATRIX={z}&tk=1cf25c9bbfd974d08ab7b788a43ce36e',
+		tileSize: 256,
 		attribution: '',
 		withMark: true
 	}, {
 		name: '天地图矢量图像(标注)',
 		type: 'raster',
-		url: 'http://t0.tianditu.gov.cn/vec_w/wmts?SERVICE=WMTS&REQUEST=GetTile&VERSION=1.0.0&LAYER=vec&STYLE=default&TILEMATRIXSET=w&FORMAT=tiles&TILECOL={x}&TILEROW={y}&TILEMATRIX={z}&tk=1cf25c9bbfd974d08ab7b788a43ce36e',
-		tileSize: 512,
+		url: 'https://t1.tianditu.gov.cn/vec_w/wmts?SERVICE=WMTS&REQUEST=GetTile&VERSION=1.0.0&LAYER=vec&STYLE=default&TILEMATRIXSET=w&FORMAT=tiles&TILECOL={x}&TILEROW={y}&TILEMATRIX={z}&tk=1cf25c9bbfd974d08ab7b788a43ce36e',
+		tileSize: 256,
 		attribution: '',
 		withMark: true
 	}];
@@ -110,12 +110,12 @@ export function getStyleFromBasemapSource(basemap: BasemapSource): Style | strin
 				type: 'raster'
 			})
 
-			const url = 'https://t0.tianditu.gov.cn/cva_w/wmts?SERVICE=WMTS&REQUEST=GetTile&VERSION=1.0.0&LAYER=cva&STYLE=default&TILEMATRIXSET=w&FORMAT=tiles&TILECOL={x}&TILEROW={y}&TILEMATRIX={z}&tk=1cf25c9bbfd974d08ab7b788a43ce36e';
+			const url = 'https://t1.tianditu.gov.cn/cva_w/wmts?SERVICE=WMTS&REQUEST=GetTile&VERSION=1.0.0&LAYER=cva&STYLE=default&TILEMATRIXSET=w&FORMAT=tiles&TILECOL={x}&TILEROW={y}&TILEMATRIX={z}&tk=1cf25c9bbfd974d08ab7b788a43ce36e';
 
 			(style.sources as any)['tiandiMark'] = {
 				type: 'raster',
 				tiles: expandUrl(url),
-				tileSize: 512,
+				tileSize: 384,
 			}
 		}
 
